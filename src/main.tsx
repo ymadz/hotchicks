@@ -10,7 +10,7 @@ const menu = [
     price: 255,
     image: '/assets/menu-sandwich.jpg',
     alt: 'Nashville hot chicken sandwich with slaw and pickles',
-    label: 'Legendary',
+    label: 'Juicy',
   },
   {
     name: 'Hot Chicks Tenders',
@@ -50,7 +50,7 @@ const menu = [
     price: 320,
     image: '',
     alt: '',
-    label: 'Chef crafted',
+    label: 'Crunchy',
   },
 ]
 
