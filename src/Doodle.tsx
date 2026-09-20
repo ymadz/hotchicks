@@ -16,3 +16,7 @@ const drawings: Record<DoodleKind, React.ReactNode> = {
 export function Doodle({ kind, className = '' }: { kind: DoodleKind; className?: string }) {
   return <svg className={`doodle ${className}`} viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="4.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" focusable="false">{drawings[kind]}</svg>
 }
+
+export function ArrowUpRight({ className = '' }: { className?: string }) {
+  return <svg className={`ui-arrow ${className}`} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" focusable="false"><path d="M4 20 20 4M9 4h11v11" /></svg>
+}
