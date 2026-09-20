@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import ReactDOM from 'react-dom/client'
+import { Doodle } from './Doodle'
 import './styles.css'
 
 const menu = [
@@ -126,8 +127,7 @@ function App() {
       <a className="skip-link" href="#main">Skip to content</a>
       <header className="site-header">
         <a className="brand" href="#top" aria-label="Hot Chicks home">
-          <span className="brand-mark" aria-hidden="true">✦</span>
-          <span className="brand-wordmark">HOT CHICKS<span>EST. 2022</span></span>
+          <img src="/assets/hotchicks-logo.png" alt="" width="72" height="72" />
         </a>
         <nav className="desktop-nav" aria-label="Main navigation">
           <a href="#menu">Menu</a>
@@ -139,6 +139,8 @@ function App() {
 
       <main id="main">
         <section className="hero" id="top" aria-labelledby="hero-title">
+          <Doodle kind="flame" className="hero-doodle hero-doodle-flame" />
+          <Doodle kind="scribble" className="hero-doodle hero-doodle-scribble" />
           <div className="hero-copy">
             <div className="hero-kicker"><span className="hero-kicker-rule" /> NASHVILLE HOT CHICKEN <span className="hero-kicker-year">EST. 2022</span></div>
             <h1 id="hero-title"><span className="hero-line">THE HOTTEST</span><span className="hero-line hero-line-accent">CHICK</span><span className="hero-line">IN TOWN.</span></h1>
@@ -151,11 +153,16 @@ function App() {
               <source src="/assets/herovideo.mp4" type="video/mp4" />
             </video>
           </div>
+          <div className="hero-wave" aria-hidden="true"><svg viewBox="0 0 1440 90" preserveAspectRatio="none"><path d="M0 33C166 89 304 0 478 30C652 60 745 83 921 36C1114 -16 1285 74 1440 24V90H0Z" /></svg></div>
         </section>
 
-        <div className="ticker" aria-label="Explore Nashville hot chicken, tenders, loaded fries, sides, and drinks"><span className="ticker-label">ON THE MENU <span aria-hidden="true">↗</span></span><div className="ticker-window"><div className="ticker-track" aria-hidden="true">{[0, 1].map(copy => <span className="ticker-sequence" key={copy}><span>NASHVILLE HOT CHICKEN</span><i>✳</i><span>LOADED FRIES</span><i>✳</i><span>TENDERS</span><i>✳</i><span>SIDE CHICKS</span><i>✳</i><span>COOL DRINKS</span><i>✳</i></span>)}</div></div></div>
+        <div className="ticker" aria-label="Hot Chicks menu favorites"><div className="ticker-window"><div className="ticker-track" aria-hidden="true">{[0, 1].map(copy => <span className="ticker-sequence" key={copy}><span>NASHVILLE HOT CHICKEN</span><i>✳</i><span>LOADED FRIES</span><i>✳</i><span>TENDERS</span><i>✳</i><span>SIDE CHICKS</span><i>✳</i><span>COOL DRINKS</span><i>✳</i></span>)}</div></div></div>
 
         <section className="menu-section" id="menu" aria-labelledby="menu-title">
+          <Doodle kind="arrow" className="menu-doodle menu-doodle-arrow" />
+          <Doodle kind="scribble" className="menu-doodle menu-doodle-scribble" />
+          <Doodle kind="flame" className="menu-doodle menu-doodle-flame" />
+          <Doodle kind="circle" className="menu-doodle menu-doodle-circle" />
           <div className="section-wrap">
             <div className="menu-heading">
               <div className="menu-heading-title"><span className="menu-icon" aria-hidden="true">✹</span><div><span className="menu-overline">✦ Hand-breaded &amp; fried hot</span><h2 id="menu-title">The main chicks</h2></div></div>
@@ -176,15 +183,15 @@ function App() {
           </div>
         </section>
 
-        <section className="extras-section" id="sides-drinks" aria-label="Sides and drinks"><div className="section-wrap extras-grid">
+        <section className="extras-section" id="sides-drinks" aria-label="Sides and drinks"><Doodle kind="spark" className="extras-doodle extras-doodle-spark" /><Doodle kind="drumstick" className="extras-doodle extras-doodle-drumstick" /><Doodle kind="scribble" className="extras-doodle extras-doodle-scribble" /><div className="section-wrap"><div className="extras-intro"><span>MAKE IT A MEAL ✳</span><h2>DON’T FORGET<br />THE EXTRAS.</h2></div><div className="extras-grid">
           <div className="extras-panel"><div className="extras-heading"><span className="extras-icon sides-icon" aria-hidden="true">♜</span><div><span className="menu-overline">✦ Crispy extras</span><h2>Side chicks</h2></div></div><button className="extras-feature" type="button" onClick={() => openItem(sides[0], 'side')}><img src="/assets/menu-cheese-fries.jpg" alt="" loading="lazy" /><div><strong>Triple Cheese Fries</strong><p>Three gooey melted cheeses to soothe the burn.</p></div><span className="extras-price">₱ 189 <b aria-hidden="true">+</b></span></button><ul className="extras-list">{sides.slice(1).map(item => <li key={item.name}><button className="extras-item" type="button" onClick={() => openItem(item, 'side')}><div><strong>{item.name}</strong><small>{item.description}</small></div><span>₱ {item.price} <b aria-hidden="true">+</b></span></button></li>)}</ul></div>
           <div className="extras-panel"><div className="extras-heading"><span className="extras-icon drinks-icon" aria-hidden="true">▣</span><div><span className="menu-overline">✦ Fire extinguishers</span><h2>Cool drinks</h2></div></div><button className="extras-feature" type="button" onClick={() => openItem(drinks[0], 'drink')}><img src="/assets/menu-yakult.jpg" alt="" loading="lazy" /><div><strong>Yakult Lemonade</strong><p>Sweet, tangy lemonade to cool the fire.</p></div><span className="extras-price">₱ 139 <b aria-hidden="true">+</b></span></button><ul className="extras-list">{drinks.slice(1).map(item => <li key={item.name}><button className="extras-item" type="button" onClick={() => openItem(item, 'drink')}><div><strong>{item.name}</strong><small>{item.description}</small></div><span>₱ {item.price} <b aria-hidden="true">+</b></span></button></li>)}</ul></div>
-        </div></section>
+        </div></div></section>
 
-        <section className="promise-section section-wrap" id="story" aria-labelledby="promise-title"><div className="promise-visual"><img src="/assets/people.png" alt="Friends enjoying a meal together" loading="lazy" /><div className="promise-badge">MADE<br />FRESH<br />DAILY.</div></div><div className="promise-copy"><p className="kicker">OUR PROMISE / 03</p><h2 id="promise-title">GOOD FOOD.<br /><em>GOOD FIRE.</em></h2><p>“Hot Chicks will serve you the freshest and highest quality food and all sides are made fresh in-house daily.”</p><span className="promise-signoff">HOT CHICKS · EST. 2022</span></div></section>
+        <section className="promise-section" id="story" aria-labelledby="promise-title"><Doodle kind="bolt" className="promise-doodle promise-doodle-bolt" /><Doodle kind="circle" className="promise-doodle promise-doodle-circle" /><Doodle kind="splash" className="promise-doodle promise-doodle-splash" /><div className="section-wrap promise-inner"><div className="promise-visual"><img src="/assets/people.png" alt="Friends enjoying a meal together" loading="lazy" /><div className="promise-badge">MADE<br />FRESH<br />DAILY.</div></div><div className="promise-copy"><p className="kicker">THE HOT CHICKS WAY</p><h2 id="promise-title">GOOD FOOD.<br /><em>GOOD FIRE.</em></h2><p>Fresh chicken, fried hot. Sides made in-house every day. That’s how we do it.</p><span className="promise-signoff">HOT CHICKS · EST. 2022</span></div></div></section>
       </main>
 
-      <footer className="site-footer"><div className="footer-top"><div><span className="footer-brand">HOT CHICKS<span>®</span></span><p>THE HOTTEST CHICK IN TOWN.</p></div><a href="#top">Back to top ↑</a></div><div className="footer-bottom"><span>© {new Date().getFullYear()} HOT CHICKS</span><span>MADE FOR THE CRUNCH.</span></div></footer>
+      <footer className="site-footer"><Doodle kind="spark" className="footer-doodle footer-doodle-spark" /><Doodle kind="arrow" className="footer-doodle footer-doodle-arrow" /><div className="footer-top"><div><span className="footer-brand">HOT CHICKS<span>®</span></span><p>THE HOTTEST CHICK IN TOWN.</p></div><a href="#top">Back to top ↑</a></div><div className="footer-bottom"><span>© {new Date().getFullYear()} HOT CHICKS</span><span>MADE FOR THE CRUNCH.</span></div></footer>
       <dialog className="order-dialog" ref={dialogRef} onClose={() => setActiveDialog(null)} onClick={event => { if (event.target === dialogRef.current) setActiveDialog(null) }} aria-label={activeDialog === 'cart' ? 'Your order bag' : 'Customize your item'}>
         <div className="order-dialog-header"><div><span className="menu-overline">HOT CHICKS / YOUR ORDER</span><h2>{activeDialog === 'cart' ? 'Your bag' : selectedProduct?.category === 'side' ? 'Add a side' : selectedProduct?.category === 'drink' ? 'Add a drink' : 'Make it yours'}</h2></div><button className="dialog-close" type="button" onClick={() => setActiveDialog(null)} aria-label="Close dialog">×</button></div>
         {activeDialog === 'item' && selectedProduct && <div className="order-dialog-body order-dialog-body-item">
